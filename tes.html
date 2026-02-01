@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student-Support AI</title>
+  <link rel="stylesheet" href="s.css">
+
+  <!-- Minimal extra styles ONLY for demo panel & expand -->
+  <style>
+    .chatbot {
+      transition: width 0.3s ease, height 0.3s ease;
+    }
+
+    .chatbot.expanded {
+      width: 520px;
+      height: 620px;
+    }
+
+    .chat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .expand-btn {
+      background: #fff;
+      color: #4a90e2;
+      border: none;
+      border-radius: 4px;
+      font-size: 12px;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+
+    .demo-panel {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .demo-panel h2 {
+      margin-bottom: 15px;
+      color: #4a90e2;
+    }
+
+    .demo-category {
+      margin-bottom: 15px;
+    }
+
+    .demo-category h4 {
+      margin-bottom: 8px;
+    }
+
+    .demo-btn {
+      background: #eaf4fc;
+      border: 1px solid #4a90e2;
+      color: #333;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 4px;
+      font-size: 13px;
+    }
+
+    .demo-btn:hover {
+      background: #d6ebfa;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🎓 Student-Support AI</div>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <h1>Welcome to Student-Support AI</h1>
+  <p>Your personalized companion for learning, guidance, and success.</p>
+  <a href="#features" class="btn">Explore Features</a>
+</section>
+
+<section id="features" class="features">
+  <h2>Features</h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h3>📚 Study Assistance</h3>
+      <p>Get help with notes, summaries, and explanations tailored to your needs.</p>
+    </div>
+    <div class="feature-card">
+      <h3>🤖 AI Chat Support</h3>
+      <p>Ask questions anytime and receive instant guidance from AI.</p>
+    </div>
+    <div class="feature-card">
+      <h3>🗓 Productivity Tools</h3>
+      <p>Plan your schedule with reminders, Gantt charts, and study trackers.</p>
+    </div>
+  </div>
+</section>
+
+<section class="demo-panel">
+  <h2>🎤 Demo Questions</h2>
+
+  <div class="demo-category">
+    <h4>📘 Study & Academics</h4>
+    <button class="demo-btn">I don’t understand this topic at all</button>
+    <button class="demo-btn">Can you explain this chapter simply?</button>
+    <button class="demo-btn">How do I revise effectively?</button>
+    <button class="demo-btn">I keep forgetting what I study</button>
+  </div>
+
+  <div class="demo-category">
+    <h4>🧪 Exams & Stress</h4>
+    <button class="demo-btn">I have an exam tomorrow and I’m panicking</button>
+    <button class="demo-btn">I studied but I still feel unprepared</button>
+    <button class="demo-btn">How do I manage exam stress?</button>
+    <button class="demo-btn">What should I do the night before an exam?</button>
+  </div>
+
+  <div class="demo-category">
+    <h4>⏱ Productivity</h4>
+    <button class="demo-btn">I waste a lot of time while studying</button>
+    <button class="demo-btn">Can you help me make a study schedule?</button>
+    <button class="demo-btn">I procrastinate a lot</button>
+    <button class="demo-btn">How many hours should I study daily?</button>
+  </div>
+
+  <div class="demo-category">
+    <h4>🎯 Motivation & Mental State</h4>
+    <button class="demo-btn">I feel demotivated lately</button>
+    <button class="demo-btn">I feel burnt out from studying</button>
+    <button class="demo-btn">I feel like I’m not good enough</button>
+  </div>
+
+  <div class="demo-category">
+    <h4>🎓 Career & College</h4>
+    <button class="demo-btn">I’m confused about my future</button>
+    <button class="demo-btn">What skills should I focus on?</button>
+    <button class="demo-btn">How do I prepare for placements?</button>
+    <button class="demo-btn">I don’t know what career I want</button>
+  </div>
+
+  <div class="demo-category">
+    <h4>😅 Casual Student Talk</h4>
+    <button class="demo-btn">Bro I’m tired of studying</button>
+    <button class="demo-btn">I messed up my exam</button>
+    <button class="demo-btn">I don’t feel like doing anything</button>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <h2>About Us</h2>
+  <p>
+    Student-Support AI is designed to empower learners with clarity,
+    efficiency, and personalized guidance. Whether you’re preparing for
+    exams or exploring new topics, we’re here to help you succeed.
+  </p>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <form>
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" required></textarea>
+    <button type="submit" class="btn">Send Message</button>
+  </form>
+</section>
+
+
+
+<footer>
+  <p>&copy; 2026 Student-Support AI. All rights reserved.</p>
+</footer>
+
+<script>
+const sendBtn = document.getElementById("send-btn");
+const chatInput = document.getElementById("chat-input");
+const chatBody = document.getElementById("chat-body");
+const chatbot = document.getElementById("chatbot");
+const expandBtn = document.getElementById("expandBtn");
+const demoButtons = document.querySelectorAll(".demo-btn");
+
+let expanded = false;
+
+expandBtn.onclick = () => {
+  expanded = !expanded;
+  chatbot.classList.toggle("expanded");
+  expandBtn.textContent = expanded ? "Collapse" : "Expand";
+};
+
+function getAIResponse(text) {
+  text = text.toLowerCase();
+
+  if (/(exam|test)/.test(text))
+    return "Exams can feel overwhelming. Let’s focus on what you know and make a simple plan.";
+
+  if (/(stress|panic|anxious)/.test(text))
+    return "That’s completely normal. Take a breath.";
+
+  if (/(study|topic|chapter|revise)/.test(text))
+    return "Tell me the subject or chapter and I’ll help you.";
+
+  if (/(schedule|time|productive)/.test(text))
+    return "Let’s create a realistic schedule.";
+
+  if (/(future|career|placement)/.test(text))
+    return "It’s okay to be unsure. We’ll explore options.";
+
+  if (/(tired|burnt|demotivated)/.test(text))
+    return "You’ve been working hard. Short breaks help.";
+
+  return "Tell me a bit more so I can help.";
+}
+
+function sendMessage(textOverride = null) {
+  const text = textOverride || chatInput.value.trim();
+  if (!text) return;
+
+  const userMsg = document.createElement("div");
+  userMsg.className = "message user";
+  userMsg.textContent = text;
+  chatBody.appendChild(userMsg);
+
+  chatInput.value = "";
+  chatBody.scrollTop = chatBody.scrollHeight;
+
+  setTimeout(() => {
+    const botMsg = document.createElement("div");
+    botMsg.className = "message bot";
+    botMsg.textContent = getAIResponse(text);
+    chatBody.appendChild(botMsg);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }, 500);
+}
+
+sendBtn.onclick = () => sendMessage();
+chatInput.addEventListener("keydown", e => {
+  if (e.key === "Enter") sendMessage();
+});
+
+demoButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    sendMessage(btn.textContent);
+  });
+});
+</script>
+
+<!-- Elfsight AI Chatbot | Untitled AI Chatbot -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-8f87d3bc-1cf6-4528-9f1d-e1dc44bd0204" data-elfsight-app-lazy></div>
+
+</body>
+</html>
