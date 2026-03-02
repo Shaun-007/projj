@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mobile Runner</title>
+
+    <!-- IMPORTANT FOR MOBILE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: blue;
+            touch-action: none; /* prevent scrolling */
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+<canvas id="gameCanvas"></canvas>
+
+<script>
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+/* ===== FULLSCREEN ===== */
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+/* ===== AUDIO ===== */
+let hitSound = new Audio("fahh.mp3");
+
+/* ===== GAME VARIABLES ===== */
+let gravity = 0.5;
+let score = 0;
+let gameOver = false;
+
+/* PLAYER IMAGE */
+let avatarImg = new Image();
+avatarImg.src = "avatar.png";
+
+/* PLAYER */
+let player = {
+    x: 100,
+    y: canvas.height - 120,
+    width: 70,
+    height: 70,
+    velocityY: 0,
+    jumping: false
+};
+
+let obstacles = [];
+
+/* CREATE OBSTACLE */
+function createObstacle() {
+    let height = 60 + Math.random() * 80;
+
+    obstacles.push({
+        x: canvas.width,
+        y: canvas.height - height,
+        width: 40,
+        height: height
+    });
+}
+
+/* JUMP FUNCTION */
+function jump() {
+    if (!player.jumping && !gameOver) {
+        player.velocityY = -14;
+        player.jumping = true;
+    }
+}
+
+/* DESKTOP JUMP */
+document.addEventListener("keydown", e => {
+    if (e.code === "Space") {
+        jump();
+    }
+});
+
+/* MOBILE JUMP (tap anywhere) */
+canvas.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+    jump();
+});
+
+/* GAME LOOP */
+function update() {
+    if (gameOver) return;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Gravity
+    player.velocityY += gravity;
+    player.y += player.velocityY;
+
+    let ground = canvas.height - player.height - 20;
+
+    if (player.y > ground) {
+        player.y = ground;
+        player.jumping = false;
+    }
+
+    ctx.drawImage(
+        avatarImg,
+        player.x,
+        player.y,
+        player.width,
+        player.height
+    );
+
+    for (let obs of obstacles) {
+        obs.x -= 7;
+
+        ctx.fillStyle = "red";
+        ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+
+        // Collision
+        if (
+            player.x < obs.x + obs.width &&
+            player.x + player.width > obs.x &&
+            player.y < obs.y + obs.height &&
+            player.y + player.height > obs.y
+        ) {
+            if (!gameOver) {
+                gameOver = true;
+                hitSound.currentTime = 0;
+                hitSound.play();
+
+                setTimeout(() => {
+                    alert("Game Over! Score: " + score);
+                }, 200);
+            }
+        }
+    }
+
+    obstacles = obstacles.filter(o => o.x > -50);
+
+    score++;
+    requestAnimationFrame(update);
+}
+
+/* SPAWN */
+setInterval(createObstacle, 1500);
+
+update();
+</script>
+
+</body>
+</html>
