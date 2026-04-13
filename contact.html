@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label{
+            font-size: 23px;
+            color: brown;
+
+        }
+        input{
+            border: 3px solid brown ;
+        }
+        textarea{
+            border: 3px solid brown;
+        }
+    </style>
+</head>
+<body style="background-image: url('bgd3.png');">
+    <div style="font-size: 25px;font-style: oblique;position: fixed;width: 100%;background-color:brown;height:50px;padding-top:12px;border: 5px solid black;">
+        <center>
+        
+        <a href="tesla.html">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="inv.html">Inventions</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://en.wikipedia.org/wiki/Nikola_Tesla">More</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="contact.html">Contact Us</a></center>
+    </div>
+    <br><br>
+    <br><br><br><br><br>
+    <div style="border: 5px solid brown;padding: 12px 12px 12px 12px;">
+        
+    
+    <center>
+    <label>Name:</label><br>
+    <input type="text" placeholder="Enter your name"><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" placeholder="Enter your email"><br><br>
+
+    <label>Message:</label><br>
+    <textarea placeholder="Enter your message"></textarea><br><br>
+    </center>
+    <center>
+        <button onclick="swap()" style="background-color: blanchedalmond;color: brown;height: 30px; width: 100px;" type="submit" value="Submit">Submit</button>
+    </center>
+
+    
+    </div>
+    <br><br>
+    <div style="color: brown;font-size: 30px; padding: 12px 12px 12px 12px;">
+        <br><br>
+        <center>
+            <h1 id="v"></h1>
+        </center>
+        <br><br>
+    </div>
+    <script>
+        function swap(){
+            document.getElementById("v").innerHTML = "Your message has been sent successfully!";
+        }
+    </script>
+</body>
+</html>
