@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="expenseApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Expense Tracker</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/controller.js"></script>
+
+    <style>
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 80px);
+            margin-top: 80px;
+        }
+
+        .auth-form-wrapper {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .auth-form {
+            width: 400px;
+            padding: 40px;
+            background: rgba(0,0,0,0.9);
+            border: 2px solid gold;
+            border-radius: 20px;
+            box-shadow: 0 0 20px gold;
+            color: gold;
+            text-align: center;
+        }
+
+        .auth-form h1 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .auth-form p.subtitle {
+            font-size: 14px;
+            margin-bottom: 30px;
+            color: rgba(255,215,0,0.7);
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: gold;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid gold;
+            border-radius: 8px;
+            background: black;
+            color: gold;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            box-shadow: 0 0 10px gold;
+            border-color: gold;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255,215,0,0.5);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .form-actions button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .btn-login {
+            background: gold;
+            color: black;
+        }
+
+        .btn-login:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px gold;
+        }
+
+        .btn-signup {
+            background: transparent;
+            color: gold;
+            border: 2px solid gold;
+        }
+
+        .btn-signup:hover {
+            background: gold;
+            color: black;
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .message.success {
+            background: rgba(144,238,144,0.2);
+            color: #90EE90;
+            border: 1px solid #90EE90;
+        }
+
+        .message.error {
+            background: rgba(255,107,107,0.2);
+            color: #FF6B6B;
+            border: 1px solid #FF6B6B;
+        }
+    </style>
+</head>
+
+<body ng-controller="LoginController">
+
+    <div id="navbar">
+        <div class="logo">
+            💰 Expense Tracker
+        </div>
+    </div>
+
+    <div class="auth-container">
+        <div class="auth-form-wrapper">
+            <div class="auth-form">
+                <h1>Login</h1>
+                <p class="subtitle">Welcome back! Track your finances</p>
+
+                <form ng-submit="login()">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text"
+                               placeholder="Enter your username"
+                               ng-model="user.username"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password"
+                               placeholder="Enter your password"
+                               ng-model="user.password"
+                               required>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-login">
+                            Login
+                        </button>
+                        <button type="button" class="btn-signup" onclick="window.location.href='signup.html'">
+                            Sign Up
+                        </button>
+                    </div>
+                </form>
+
+                <div ng-show="message" 
+                     class="message" 
+                     ng-class="{'error': message.indexOf('successful') === -1, 'success': message.indexOf('successful') > -1}">
+                    {{message}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

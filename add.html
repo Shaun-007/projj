@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="expenseApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Transaction - Expense Tracker</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/controller.js"></script>
+</head>
+
+<body ng-controller="ExpenseController">
+
+    <div id="navbar">
+        <div class="logo">
+            💰 Expense Tracker
+        </div>
+        <div style="float: right; padding: 20px; color: gold;">
+            <span>Welcome, <strong>{{currentUser}}</strong> | </span>
+            <a href="#" ng-click="logout()" style="color: gold; cursor: pointer; text-decoration: none;">Logout</a>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <a href="dashboard.html">📊 Dashboard</a>
+        <a href="add.html" class="active">➕ Add Transaction</a>
+        <a href="history.html">📜 History</a>
+    </div>
+
+    <div class="main">
+
+        <h1 class="heading">
+            Add Transaction
+        </h1>
+
+        <div class="form-box">
+
+            <form ng-submit="addTransaction()">
+
+                <label>Transaction Type</label>
+                <select ng-model="data.type" required>
+                    <option value="">-- Select Type --</option>
+                    <option>Income</option>
+                    <option>Expense</option>
+                </select>
+
+                <label>Category</label>
+                <input type="text"
+                       placeholder="e.g., Salary, Food, Transport"
+                       ng-model="data.category" required>
+
+                <label>Amount</label>
+                <input type="number"
+                       placeholder="Enter amount"
+                       ng-model="data.amount" required min="0">
+
+                <label>Date</label>
+                <input type="date"
+                       ng-model="data.date" required>
+
+                <button type="submit">
+                    ✓ Add Transaction
+                </button>
+
+            </form>
+
+            <h3 class="success-message">{{msg}}</h3>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
